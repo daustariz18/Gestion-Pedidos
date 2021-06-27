@@ -1,0 +1,49 @@
+{% extends "UPWapp/base.html" %}
+
+{% load static %}
+  
+  <!-- Contenido Cambiante-->
+  {% block content %}
+  <P></P>
+  <div class= "container">
+
+  <div style="float:right;">
+
+    
+    {% include "carro/widget.html" %}
+      
+  </div>  
+ 
+  <div class="row">
+
+  {% for producto in productos %}
+  
+    <div class="col-md-3">
+    <div class="card" style="width: 100%; padding: 2px; " >
+      
+      <img src="{{producto.imagen.url}}" class="card-img-top">
+
+      <div class="card-body" style="text-align: center;">
+
+          <h7 class="card-title">{{producto.nombre}}</h7>
+          <p class="card-text">{{producto.precio}}&nbsp;$US</p>
+          
+
+      </div>
+
+      <div class="card-footer text-center">
+
+         <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carro</a>
+
+      </div>
+
+    </div>
+
+  </div>
+    {% endfor %}
+  
+  </div>
+</div>
+   <P></P>
+  {% endblock %}
+
