@@ -15,7 +15,7 @@ class Carro:
             self.carro[producto.id]={
                 "producto_id":producto.id,
                 "nombre":producto.nombre,
-                "precio":str(producto.precio),
+                "precio":float(producto.precio),
                 "cantidad":1,
                 "imagen":producto.imagen.url
             } 
@@ -23,6 +23,7 @@ class Carro:
             for key, value in self.carro.items():
                 if key==str(producto.id):
                     value["cantidad"]=value["cantidad"]+1
+                    value["precio"]=round(float(value["precio"])+producto.precio,2)
                     break
         self.guardar_carro()
 
